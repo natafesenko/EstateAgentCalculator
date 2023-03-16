@@ -1,6 +1,6 @@
 
 public class Calculator {
-    public static double calculateInsuranceCost(double houseValue, double interestRate, int noOfOccupants) {
+    public static double calculateInsuranceCost(double houseValue, double interestRate, double noOfOccupants) {
         double cost = houseValue * interestRate * noOfOccupants;
         if (cost < 275) {
             System.out.println("Good Value!!!");
@@ -10,8 +10,8 @@ public class Calculator {
         return cost;
     }
     
-    public static int calculateYearsToPay(double houseValue, double monthlyMortgage) {
-        int years = 0;
+    public static double calculateYearsToPay(double houseValue, double monthlyMortgage) {
+        double years = 0;
         while (houseValue > 0) {
             houseValue -= monthlyMortgage * 12;
             years++;

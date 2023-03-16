@@ -5,66 +5,61 @@ import java.util.InputMismatchException;
 public class House extends Calculator {
     private double houseValue;
     private double monthlyMortgage;
-    private int noOfOccupants;
+    private double noOfOccupants;
     
-    public House(double houseValue, double monthlyMortgage, int noOfOccupants) {
+    public House(double houseValue, double monthlyMortgage, double noOfOccupants) {
         this.houseValue = houseValue;
         this.monthlyMortgage = monthlyMortgage;
         this.noOfOccupants = noOfOccupants;
-    }
-    
-    public double getHouseValue() {
-        return houseValue;
     }
     
     public void setHouseValue(double houseValue) {
         this.houseValue = houseValue;
     }
     
-    public double getMonthlyMortgage() {
-        return monthlyMortgage;
-    }
-    
     public void setMonthlyMortgage(double monthlyMortgage) {
         this.monthlyMortgage = monthlyMortgage;
     }
     
-    public int getNoOfOccupants() {
-        return noOfOccupants;
-    }
-    
-    public void setNoOfOccupants(int noOfOccupants) {
+    public void setNoOfOccupants(double noOfOccupants) {
     	this.noOfOccupants = noOfOccupants;
     }
 
+    public double getHouseValue() {
+        return houseValue;
+    }
+    
+    public double getNoOfOccupants() {
+        return noOfOccupants;
+    }
+    
+    public double getMonthlyMortgage() {
+        return monthlyMortgage;
+    }
     public static void main(String[] args) {
-        Scanner UserInput = new Scanner(System.in);
-        displayWelcomeMessage();
+    	Scanner UserInput = new Scanner(System.in);
+    	Calculator.displayWelcomeMessage();
         
-        System.out.print("Enter the value of the house: ");
-        double houseValue = UserInput.nextDouble();
-        
-       System.out.print("Enter the monthly mortgage amount: ");
-       double monthlyMortgage = UserInput.nextDouble();
-        
-       System.out.print("Enter the number of occupants: ");
-       int noOfOccupants = UserInput.nextInt();
+    	double houseValue = getUserInput(UserInput,"Enter the value of the house: ");
+        double monthlyMortgage = getUserInput(UserInput,"Enter the monthly mortgage amount: ");
+        double noOfOccupants = getUserInput(UserInput,"Enter the number of occupants: ");
         
         House house = new House(houseValue, monthlyMortgage, noOfOccupants);
         
         double insuranceCost = calculateInsuranceCost(house.getHouseValue(), 0.00035, house.getNoOfOccupants());
         System.out.println("The cost of house insurance is $" + insuranceCost);
         
-        int yearsToPay = calculateYearsToPay(house.getHouseValue(), house.getMonthlyMortgage());
-        System.out.println("It will take " + yearsToPay + " years to pay off the mortgage on this house.");
+     //   int yearsToPay = calculateYearsToPay(house.getHouseValue(), house.getMonthlyMortgage());
+    //    System.out.println("It will take " + yearsToPay + " years to pay off the mortgage on this house.");
         
         double localPropertyTax = calculateLocalPropertyTax(house.getHouseValue());
         System.out.println("The local property tax is $" + localPropertyTax);
         
         double rentalIncome = calculateRentalIncome(house.getHouseValue()); 
+        Calculator.displayGoodbyeMessage();
     }
     
-    public static double UserInput(Scanner in, String question) {
+    public static double getUserInput(Scanner in, String question) {
 	    // work with variable height
 	    double output;
 	    while (true) {
