@@ -1,7 +1,6 @@
 // House.java
 import java.util.Scanner;
-
-import java.util.Scanner;
+import java.util.InputMismatchException; 
 
 public class House extends Calculator {
     private double houseValue;
@@ -38,22 +37,18 @@ public class House extends Calculator {
     	this.noOfOccupants = noOfOccupants;
     }
 
-        
-    
-
-
     public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
+        Scanner UserInput = new Scanner(System.in);
         displayWelcomeMessage();
         
         System.out.print("Enter the value of the house: ");
-        double houseValue = input.nextDouble();
+        double houseValue = UserInput.nextDouble();
         
-        System.out.print("Enter the monthly mortgage amount: ");
-        double monthlyMortgage = input.nextDouble();
+       System.out.print("Enter the monthly mortgage amount: ");
+       double monthlyMortgage = UserInput.nextDouble();
         
-        System.out.print("Enter the number of occupants: ");
-        int noOfOccupants = input.nextInt();
+       System.out.print("Enter the number of occupants: ");
+       int noOfOccupants = UserInput.nextInt();
         
         House house = new House(houseValue, monthlyMortgage, noOfOccupants);
         
@@ -66,6 +61,33 @@ public class House extends Calculator {
         double localPropertyTax = calculateLocalPropertyTax(house.getHouseValue());
         System.out.println("The local property tax is $" + localPropertyTax);
         
-        double rentalIncome = calculateRentalIncome(house.getHouseValue());
+        double rentalIncome = calculateRentalIncome(house.getHouseValue()); 
     }
+    
+    public static double UserInput(Scanner in, String question) {
+	    // work with variable height
+	    double output;
+	    while (true) {
+	      try {
+	        System.out.println(question);
+	        // initial variable height
+	        output = in.nextDouble();
+	        System.out.println("Thanks");
+	        // processing the error
+	      } catch (InputMismatchException ex) {
+	        System.out.println("Error in your input");
+	        // resets this scanner
+	        in.reset();
+	        in.nextLine();
+	        continue;
+	      }
+	      //check that the input value is not 0
+	      if (Double.doubleToRawLongBits(output) <= 0) {
+	        System.err.println("You must provide a correct input(double precision float)");
+	        continue;
+	      }
+	      break;
+	    }
+	    return output;
+	 }
 }

@@ -1,2 +1,2 @@
-# EstateAgentCalculator-
+# EstateAgentCalculator
 Study project

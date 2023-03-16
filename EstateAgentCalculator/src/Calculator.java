@@ -1,4 +1,4 @@
-// PropertyMaths.java
+
 public class Calculator {
     public static double calculateInsuranceCost(double houseValue, double interestRate, int noOfOccupants) {
         double cost = houseValue * interestRate * noOfOccupants;
