@@ -1,3 +1,4 @@
+// Calculator.java
 
 public class Calculator {
     public static double calculateInsuranceCost(double houseValue, double interestRate, double noOfOccupants) {
@@ -28,10 +29,10 @@ public class Calculator {
     }
     
     public static void displayWelcomeMessage() {
-        System.out.println("Welcome to the Property Math Calculator!");
+        System.out.println("Welcome to the Estate Agent Calculator!");
     }
     
     public static void displayGoodbyeMessage() {
-        System.out.println("Thank you for using the Property Math Calculator!");
+        System.out.println("Thank you for using the Estate Agent Calculator!");
     }
 }

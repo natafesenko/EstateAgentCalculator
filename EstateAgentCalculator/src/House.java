@@ -49,13 +49,14 @@ public class House extends Calculator {
         double insuranceCost = calculateInsuranceCost(house.getHouseValue(), 0.00035, house.getNoOfOccupants());
         System.out.println("The cost of house insurance is $" + insuranceCost);
         
-     //   int yearsToPay = calculateYearsToPay(house.getHouseValue(), house.getMonthlyMortgage());
-    //    System.out.println("It will take " + yearsToPay + " years to pay off the mortgage on this house.");
+        double yearsToPay = calculateYearsToPay(house.getHouseValue(), house.getMonthlyMortgage());
+        System.out.println("It will take " + yearsToPay + " years to pay off the mortgage on this house.");
         
         double localPropertyTax = calculateLocalPropertyTax(house.getHouseValue());
         System.out.println("The local property tax is $" + localPropertyTax);
         
         double rentalIncome = calculateRentalIncome(house.getHouseValue()); 
+        System.out.println("The rental income is $" + rentalIncome);
         Calculator.displayGoodbyeMessage();
     }
     
